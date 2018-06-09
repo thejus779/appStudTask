@@ -71,9 +71,7 @@
 			children = (
 				149C24C020CBBB2800570EAA /* MVC */,
 				149C24AB20CBBB1300570EAA /* AppDelegate.swift */,
-				149C24AF20CBBB1300570EAA /* Main.storyboard */,
 				149C24B520CBBB1300570EAA /* Assets.xcassets */,
-				149C24B720CBBB1300570EAA /* LaunchScreen.storyboard */,
 				149C24BA20CBBB1300570EAA /* Info.plist */,
 				149C24B220CBBB1300570EAA /* AppstudTest.xcdatamodeld */,
 			);
@@ -94,8 +92,8 @@
 		149C24C120CBBB2E00570EAA /* View */ = {
 			isa = PBXGroup;
 			children = (
-				149C24C320CBBB4900570EAA /* MapsViewController.swift */,
-				149C24C520CBBB5500570EAA /* MapListViewController.swift */,
+				149C24AF20CBBB1300570EAA /* Main.storyboard */,
+				149C24B720CBBB1300570EAA /* LaunchScreen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -103,6 +101,8 @@
 		149C24C220CBBB3300570EAA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				149C24C320CBBB4900570EAA /* MapsViewController.swift */,
+				149C24C520CBBB5500570EAA /* MapListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
