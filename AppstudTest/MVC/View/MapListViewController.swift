@@ -17,7 +17,10 @@ class MapListViewController: UIViewController,UITableViewDelegate, UITableViewDa
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tabelList: UITableView!
+    let locationManager = CLLocationManager()
     let cellResueIdentifier = "ListTableViewCell"
+    var latitude:String = ""
+    var longitude:String = ""
     var searchActive : Bool = false
     let apiKey = "AIzaSyCTK5ZKQlhUoKMxpLCRzpw6Cpe1EC6C65Q"
     var searchQuery : String = ""
@@ -27,11 +30,18 @@ class MapListViewController: UIViewController,UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&type=restaurant&keyword=bar&key=\(apiKey)"
-        self.fetchPlaces(url:url)
+        
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
+        
+        
+        
         
         searchBar.delegate = self
-
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,7 +50,7 @@ class MapListViewController: UIViewController,UITableViewDelegate, UITableViewDa
     }
     
     
-     // MARK: - Fethc Places API
+    // MARK: - Fethc Places API
     
     func fetchPlaces(url:String){
         
@@ -53,13 +63,13 @@ class MapListViewController: UIViewController,UITableViewDelegate, UITableViewDa
                     self.arrRes = resData as! [[String:AnyObject]]
                 }
                 
-              
-                    self.tabelList.reloadData()
+                
+                self.tabelList.reloadData()
             }
         }
     }
     
-
+    
     // MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -67,7 +77,7 @@ class MapListViewController: UIViewController,UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       
+        
         return arrRes.count
     }
     
@@ -107,22 +117,60 @@ class MapListViewController: UIViewController,UITableViewDelegate, UITableViewDa
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        let url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=\(self.searchQuery as String)&radius=1000&key=\(self.apiKey)"
-
+        self.searchQuery  = self.searchQuery.replacingOccurrences(of: " ", with: "+")
+        let url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=\(self.searchQuery as String)&radius=1000&type=restaurant&key=\(self.apiKey)"
+        
         fetchPlaces(url: url)
         searchActive = false;
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.searchQuery = searchText
-//        let url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=\(searchText)&key=\(self.apiKey)"
-//        fetchPlaces(url: url)
-//        if(filtered.count == 0){
-//            searchActive = false;
-//        } else {
-//            searchActive = true;
-//        }
-//        self.tabelList.reloadData()
+        
     }
+    
+}
 
+// MARK: - Extension CLLocation  delegate
+extension MapListViewController : CLLocationManagerDelegate {
+    private func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            locationManager.requestLocation()
+            let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(latitude),\(longitude)&radius=1000&type=restaurant&keyword=bar&key=\(apiKey)"
+            self.fetchPlaces(url:url)
+        }
+        else if status == .denied || status == .restricted{
+            
+            
+            
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            self.longitude = "\(location.coordinate.longitude)"
+            self.latitude = "\(location.coordinate.latitude)"
+            
+            switch CLLocationManager.authorizationStatus() {
+            case .notDetermined:
+                locationManager.requestWhenInUseAuthorization()
+                break
+                
+            case .restricted, .denied:
+                // Disable location features
+                break
+                
+            case .authorizedWhenInUse, .authorizedAlways:
+                // Enable location features
+                let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(latitude),\(longitude)&radius=1000&type=restaurant&keyword=bar&key=\(apiKey)"
+                self.fetchPlaces(url:url)
+                break
+            }
+            locationManager.stopUpdatingLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("error:: (error)")
+    }
 }
