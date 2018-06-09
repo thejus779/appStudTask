@@ -12,6 +12,7 @@ import SwiftyJSON
 import GooglePlaces
 import GoogleMaps
 import SDWebImage
+import SCLAlertView
 
 class MapListViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
@@ -31,7 +32,7 @@ class MapListViewController: UIViewController,UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+       
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
@@ -157,7 +158,7 @@ extension MapListViewController : CLLocationManagerDelegate {
                 break
                 
             case .restricted, .denied:
-                // Disable location features
+                SCLAlertView().showInfo("Important info", subTitle: "Location Not enabled, search for a place by location")
                 break
                 
             case .authorizedWhenInUse, .authorizedAlways:

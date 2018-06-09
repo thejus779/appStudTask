@@ -1,4 +1,4 @@
-# Uncomment the next line to define a global platform for your project
+pod 'SCLAlertView'# Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
 target 'AppstudTest' do
@@ -11,5 +11,7 @@ target 'AppstudTest' do
   pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'SDWebImage'
+  pod 'SCLAlertView'
+  pod 'IQKeyboardManagerSwift'
 
 end

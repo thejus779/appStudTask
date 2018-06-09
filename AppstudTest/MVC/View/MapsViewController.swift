@@ -13,6 +13,7 @@ import SwiftyJSON
 import GooglePlaces
 import GoogleMaps
 import SDWebImage
+import SCLAlertView
 
 class MapsViewController: UIViewController {
     
@@ -120,6 +121,7 @@ extension MapsViewController : CLLocationManagerDelegate {
                 
             case .restricted, .denied:
                 // Disable location features
+                SCLAlertView().showInfo("Important info", subTitle: "Please enable Location Permissions")
                 break
                 
             case .authorizedWhenInUse, .authorizedAlways:
@@ -157,7 +159,9 @@ extension MapsViewController: MKMapViewDelegate {
         
         let annotationView = MKAnnotationView(annotation: pin, reuseIdentifier: "pinPlaces")
         let myImageView=UIImageView(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+        
         myImageView.sd_setImage(with: URL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=500&photoreference=\(photo_ref)&key=\(apiKey)"), placeholderImage: UIImage(named: "placeholder.png"))
+        
         myImageView.clipsToBounds=true
         myImageView.layer.cornerRadius=myImageView.frame.width/2
         myImageView.layer.borderColor = UIColor.black.cgColor
