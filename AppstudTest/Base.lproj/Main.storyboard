@@ -96,7 +96,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TVD-sB-dZa"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="List" id="xNE-fa-Zvb"/>
+                    <tabBarItem key="tabBarItem" title="List" id="xNE-fa-Zvb">
+                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="searchBar" destination="D93-wp-OCb" id="NWF-p8-Uvv"/>
                         <outlet property="tabelList" destination="PPS-Bl-F1M" id="GZ3-b5-lED"/>
@@ -106,7 +108,7 @@
             </objects>
             <point key="canvasLocation" x="1048.8" y="562.66866566716647"/>
         </scene>
-        <!--Map-->
+        <!--Maps-->
         <scene sceneID="1ss-UQ-LYI">
             <objects>
                 <viewController id="xFV-6f-uZ6" customClass="MapsViewController" customModule="AppstudTest" customModuleProvider="target" sceneMemberID="viewController">
@@ -127,7 +129,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="11Y-JI-fDd"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" id="utd-Tn-vjN"/>
+                    <tabBarItem key="tabBarItem" title="Maps" id="utd-Tn-vjN">
+                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="mapView" destination="ALC-6M-MqI" id="wdP-XX-AN2"/>
                     </connections>

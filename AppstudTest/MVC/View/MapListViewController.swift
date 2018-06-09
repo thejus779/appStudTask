@@ -37,7 +37,7 @@ class MapListViewController: UIViewController,UITableViewDelegate, UITableViewDa
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
         
-        
+
         
         
         searchBar.delegate = self

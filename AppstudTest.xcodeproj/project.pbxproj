@@ -15,7 +15,7 @@
 		149C24C420CBBB4900570EAA /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149C24C320CBBB4900570EAA /* MapsViewController.swift */; };
 		149C24C620CBBB5500570EAA /* MapListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149C24C520CBBB5500570EAA /* MapListViewController.swift */; };
 		149C24C920CBBCD700570EAA /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149C24C820CBBCD700570EAA /* ListTableViewCell.swift */; };
-		149C24CB20CBBF0400570EAA /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149C24CA20CBBF0400570EAA /* TableViewController.swift */; };
+		149C24CE20CBFBD400570EAA /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149C24CD20CBFBD400570EAA /* Place.swift */; };
 		2D40BC535967157588BF2AFE /* Pods_AppstudTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CF1E4538B24517BB3053852 /* Pods_AppstudTest.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,7 +31,7 @@
 		149C24C320CBBB4900570EAA /* MapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
 		149C24C520CBBB5500570EAA /* MapListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapListViewController.swift; sourceTree = "<group>"; };
 		149C24C820CBBCD700570EAA /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
-		149C24CA20CBBF0400570EAA /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		149C24CD20CBFBD400570EAA /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		1CF1E4538B24517BB3053852 /* Pods_AppstudTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppstudTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CFB3FF5F03951F11F7DC9E3 /* Pods-AppstudTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppstudTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppstudTest/Pods-AppstudTest.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +83,7 @@
 		149C24C020CBBB2800570EAA /* MVC */ = {
 			isa = PBXGroup;
 			children = (
+				149C24CC20CBFBBC00570EAA /* Models */,
 				149C24C720CBBCBC00570EAA /* Resuables */,
 				149C24C220CBBB3300570EAA /* Controller */,
 				149C24C120CBBB2E00570EAA /* View */,
@@ -95,7 +96,6 @@
 			children = (
 				149C24C320CBBB4900570EAA /* MapsViewController.swift */,
 				149C24C520CBBB5500570EAA /* MapListViewController.swift */,
-				149C24CA20CBBF0400570EAA /* TableViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -113,6 +113,14 @@
 				149C24C820CBBCD700570EAA /* ListTableViewCell.swift */,
 			);
 			path = Resuables;
+			sourceTree = "<group>";
+		};
+		149C24CC20CBFBBC00570EAA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				149C24CD20CBFBD400570EAA /* Place.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		56F9077A220EA755C10BDDF5 /* Pods */ = {
@@ -273,9 +281,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				149C24C420CBBB4900570EAA /* MapsViewController.swift in Sources */,
-				149C24CB20CBBF0400570EAA /* TableViewController.swift in Sources */,
 				149C24B420CBBB1300570EAA /* AppstudTest.xcdatamodeld in Sources */,
 				149C24AC20CBBB1300570EAA /* AppDelegate.swift in Sources */,
+				149C24CE20CBFBD400570EAA /* Place.swift in Sources */,
 				149C24C620CBBB5500570EAA /* MapListViewController.swift in Sources */,
 				149C24C920CBBCD700570EAA /* ListTableViewCell.swift in Sources */,
 			);
